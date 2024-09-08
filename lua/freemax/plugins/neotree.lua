@@ -13,6 +13,7 @@ return {
 				hijack_netrw_behavior = "open_current",
 				use_libuv_file_watcher = true,
 				window = {
+					width = 25,
 					mappings = {
 						["<CR>"] = "open",
 						["o"] = "open",
