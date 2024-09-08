@@ -12,7 +12,7 @@ return {
 		local protocol = require("vim.lsp.protocol")
 
 		local on_attach = function(client, bufnr)
-			-- format on save
+			-- форматирование при сохранении
 			if client.server_capabilities.documentFormattingProvider then
 				vim.api.nvim_create_autocmd("BufWritePre", {
 					group = vim.api.nvim_create_augroup("Format", { clear = true }),
@@ -29,47 +29,66 @@ return {
 		mason_lspconfig.setup_handlers({
 			function(server)
 				nvim_lsp[server].setup({
+					on_attach = on_attach,
 					capabilities = capabilities,
 				})
 			end,
 			["tsserver"] = function()
-				nvim_lsp["tsserver"].setup({
+				nvim_lsp.tsserver.setup({
 					on_attach = on_attach,
 					capabilities = capabilities,
 				})
 			end,
 			["cssls"] = function()
-				nvim_lsp["cssls"].setup({
+				nvim_lsp.cssls.setup({
 					on_attach = on_attach,
 					capabilities = capabilities,
 				})
 			end,
 			["tailwindcss"] = function()
-				nvim_lsp["tailwindcss"].setup({
+				nvim_lsp.tailwindcss.setup({
 					on_attach = on_attach,
 					capabilities = capabilities,
 				})
 			end,
 			["html"] = function()
-				nvim_lsp["html"].setup({
+				nvim_lsp.html.setup({
 					on_attach = on_attach,
 					capabilities = capabilities,
 				})
 			end,
 			["jsonls"] = function()
-				nvim_lsp["jsonls"].setup({
+				nvim_lsp.jsonls.setup({
 					on_attach = on_attach,
 					capabilities = capabilities,
 				})
 			end,
 			["eslint"] = function()
-				nvim_lsp["eslint"].setup({
+				nvim_lsp.eslint.setup({
 					on_attach = on_attach,
 					capabilities = capabilities,
 				})
 			end,
 			["pyright"] = function()
-				nvim_lsp["pyright"].setup({
+				nvim_lsp.pyright.setup({
+					on_attach = on_attach,
+					capabilities = capabilities,
+				})
+			end,
+			["ansiblels"] = function()
+				nvim_lsp.ansiblels.setup({
+					on_attach = on_attach,
+					capabilities = capabilities,
+				})
+			end,
+			["solargraph"] = function()
+				nvim_lsp.solargraph.setup({
+					on_attach = on_attach,
+					capabilities = capabilities,
+				})
+			end,
+			["gopls"] = function()
+				nvim_lsp.gopls.setup({
 					on_attach = on_attach,
 					capabilities = capabilities,
 				})
