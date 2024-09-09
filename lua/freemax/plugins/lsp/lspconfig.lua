@@ -76,9 +76,19 @@ return {
 				})
 			end,
 			["ansiblels"] = function()
-				nvim_lsp.ansiblels.setup({
-					on_attach = on_attach,
-					capabilities = capabilities,
+				require("lspconfig").ansiblels.setup({
+					settings = {
+						ansible = {
+							validate = true,
+							lint = {
+								enable = true,
+								executable = "ansible-lint",
+							},
+						},
+					},
+					on_attach = function(client, bufnr)
+						-- Настройка привязки клавиш или других функций
+					end,
 				})
 			end,
 			["solargraph"] = function()
